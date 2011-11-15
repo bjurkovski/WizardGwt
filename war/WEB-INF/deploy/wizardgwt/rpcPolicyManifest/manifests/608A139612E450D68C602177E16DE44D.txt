@@ -1,0 +1,2 @@
+serviceClass: wizardGwt.client.GreetingService
+path: F196CC7A12F84DEB6F0184E54C776E13.gwt.rpc

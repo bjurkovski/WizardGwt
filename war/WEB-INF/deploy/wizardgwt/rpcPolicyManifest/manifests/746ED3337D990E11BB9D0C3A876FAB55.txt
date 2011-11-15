@@ -1,0 +1,2 @@
+serviceClass: wizardGwt.client.RandomTextService
+path: 34B1512BD4FC12B3AA35E613AC07DE6D.gwt.rpc

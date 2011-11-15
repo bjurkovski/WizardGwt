@@ -1,0 +1,23 @@
+<world>
+	<countries>
+		<country name="France">
+			<cities>
+				<city name="Paris"/>
+				<city name="Grenoble"/>
+				<city name="Nantes"/>
+				<city name="Lille"/>
+				<city name="Marseille"/>
+				<city name="Lyon"/>
+			</cities>
+		</country>
+		<country name="Brazil">
+			<cities>
+				<city name="São Paulo"/>
+				<city name="Rio de Janeiro"/>
+				<city name="Porto Alegre"/>
+				<city name="Curitiba"/>
+				<city name="Florianópolis"/>
+			</cities>
+		</country>
+	</countries>
+</world>

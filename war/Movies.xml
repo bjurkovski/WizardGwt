@@ -1,0 +1,17 @@
+<movies>
+	<movie name="The Lord of the Rings: The Fellowship of the Ring">
+		<poster url="http://ia.media-imdb.com/images/M/MV5BNTEyMjAwMDU1OV5BMl5BanBnXkFtZTcwNDQyNTkxMw@@._V1._SY317_CR1,0,214,317_.jpg"/>
+	</movie>
+	<movie name="The Lord of the Rings: The Two Towers">
+		<poster url="http://ia.media-imdb.com/images/M/MV5BMTAyNDU0NjY4NTheQTJeQWpwZ15BbWU2MDk4MTY2Nw@@._V1._SY317_CR1,0,214,317_.jpg"/>
+	</movie>
+	<movie name="The Lord of the Rings: The Return of the King">
+		<poster url="http://ia.media-imdb.com/images/M/MV5BMjE4MjA1NTAyMV5BMl5BanBnXkFtZTcwNzM1NDQyMQ@@._V1._SY317_.jpg"/>
+	</movie>
+	<movie name="TRON">
+		<poster url="http://ia.media-imdb.com/images/M/MV5BMTY5NjM2MjAwOV5BMl5BanBnXkFtZTYwMTgyMzA5._V1._SY317_.jpg"/>
+	</movie>
+	<movie name="TRON: Legacy">
+		<poster url="http://ia.media-imdb.com/images/M/MV5BMTk4NTk4MTk1OF5BMl5BanBnXkFtZTcwNTE2MDIwNA@@._V1._SY317_.jpg"/>
+	</movie>
+</movies>
