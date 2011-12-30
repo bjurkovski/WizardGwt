@@ -1,5 +1,8 @@
 package wizardGwt.client;
 
+import java.util.List;
+import java.util.Set;
+
 import wizardGwt.client.pages.DynamicContentPage;
 import wizardGwt.client.pages.FormPage;
 import wizardGwt.client.pages.MoviePage;
@@ -20,7 +23,9 @@ import com.google.gwt.http.client.RequestBuilder;
 import com.google.gwt.http.client.RequestCallback;
 import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
+import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Grid;
@@ -41,15 +46,17 @@ public class WizardGwt implements EntryPoint {
 	
 	final VerticalPanel vPanel = new VerticalPanel();
 	final HorizontalPanel hPanel = new HorizontalPanel();
+	final HorizontalPanel languagePanel = new HorizontalPanel();
 	final Button previousButton = new Button(constants.previous());
 	final Button nextButton = new Button(constants.next());
+	Anchor[] localeLinks;
 	
 	private WizardPage currentPage;
 	final FormPage formPage = new FormPage(nextButton);
 	final MoviePage moviePage = new MoviePage();
 	final ReviewPage reviewPage = new ReviewPage();
 	final DynamicContentPage dcPage = new DynamicContentPage();
-	
+
 	int currentPageNumber = 0;
 	final int NUM_PAGES = 4;
 	
@@ -60,6 +67,8 @@ public class WizardGwt implements EntryPoint {
 		
 		currentPageNumber = pageNumber;
 		vPanel.clear();
+		vPanel.add(languagePanel);
+		vPanel.setCellHorizontalAlignment(languagePanel, VerticalPanel.ALIGN_RIGHT);
 		switch(pageNumber) {
 			case 0:
 				currentPage = formPage;
@@ -73,7 +82,7 @@ public class WizardGwt implements EntryPoint {
 				break;
 			case 2:
 				currentPage = reviewPage;
-				reviewPage.fillWith(formPage);
+				reviewPage.fillWith(formPage, moviePage);
 				previousButton.setEnabled(true);
 				nextButton.setEnabled(true);
 				break;
@@ -110,6 +119,24 @@ public class WizardGwt implements EntryPoint {
 		NextButtonHandler nHandler = new NextButtonHandler();
 		nextButton.addClickHandler(nHandler);
 		
+		languagePanel.setSpacing(10);
+		String[] locales = LocaleInfo.getAvailableLocaleNames();
+		localeLinks = new Anchor[locales.length];
+		int i=0;
+		for(final String l : locales) {
+			String lName = l;
+			if(lName.equals("default")) lName = "en";
+			localeLinks[i] = new Anchor(lName);
+			localeLinks[i].addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					changeLocale(l);
+				}
+			});
+			languagePanel.add(localeLinks[i]);
+			i++;
+		}
+		
 		hPanel.add(previousButton);
 		hPanel.add(nextButton);
 		
@@ -117,4 +144,43 @@ public class WizardGwt implements EntryPoint {
 		
 		RootPanel.get("interface").add(vPanel);
 	}
+	
+	/**
+     * JSNI method to change the locale of the application - it effectively
+     * parses the existing URL and creates a new one for the chosen locale.
+     *
+     * Modified from http://www.mail-archive.com/google-web-toolkit@googlegroups.com/msg09290.html
+     * on 30 Dec 2011, 8:53 PM (Paris Time)
+     *
+     * @param newLocale
+     */
+    private native void changeLocale(String newLocale)/*-{
+        var currLocation = $wnd.location.toString();
+        var noHistoryCurrLocArray = currLocation.split("#");
+        var noHistoryCurrLoc = noHistoryCurrLocArray[0];
+        var locArray = noHistoryCurrLoc.split("?");
+        var hasLocale = false;
+        var newParams = "?";
+        if(locArray.length > 1) {
+        	var params = locArray[1].split("&");
+        	for(var i=0; i<params.length; i++) {
+        		if(i>0) newParams += "&";
+        		
+        		var paramKeyVal = params[i].split("=");
+        		if(paramKeyVal[0] == "locale") {
+        			newParams += "locale=" + newLocale;
+        			hasLocale = true;
+        		}
+        		else
+        			newParams += params[i];
+        	}
+        }
+        
+        if(!hasLocale) {
+        	if(params.length > 0) newParams += "&";
+        	newParams += "locale=" + newLocale;
+        }
+        
+        $wnd.location.href = locArray[0] + newParams;
+    }-*/;
 }

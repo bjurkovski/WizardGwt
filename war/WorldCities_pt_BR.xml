@@ -1,22 +1,22 @@
 <world>
 	<countries>
-		<country name="França">
+		<country id="0" name="França">
 			<cities>
-				<city name="Paris"/>
-				<city name="Grenoble"/>
-				<city name="Nantes"/>
-				<city name="Lille"/>
-				<city name="Marselha"/>
-				<city name="Lyon"/>
+				<city id="0" name="Paris"/>
+				<city id="1" name="Grenoble"/>
+				<city id="2" name="Nantes"/>
+				<city id="3" name="Lille"/>
+				<city id="4" name="Marselha"/>
+				<city id="5" name="Lyon"/>
 			</cities>
 		</country>
-		<country name="Brasil">
+		<country id="1" name="Brasil">
 			<cities>
-				<city name="São Paulo"/>
-				<city name="Rio de Janeiro"/>
-				<city name="Porto Alegre"/>
-				<city name="Curitiba"/>
-				<city name="Florianópolis"/>
+				<city id="0" name="São Paulo"/>
+				<city id="1" name="Rio de Janeiro"/>
+				<city id="2" name="Porto Alegre"/>
+				<city id="3" name="Curitiba"/>
+				<city id="4" name="Florianópolis"/>
 			</cities>
 		</country>
 	</countries>

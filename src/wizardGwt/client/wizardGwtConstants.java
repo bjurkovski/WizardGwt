@@ -21,6 +21,9 @@ public interface wizardGwtConstants extends Constants {
 	@DefaultStringValue("City")
 	String city();
 	
+	@DefaultStringValue("Favorite Movie")
+	String favMovie();
+	
 	@DefaultStringValue("Sex")
 	String sex();
 	
@@ -42,7 +45,7 @@ public interface wizardGwtConstants extends Constants {
 	@DefaultStringValue("Please enter a valid e-mail.")
 	String errorInvalidEmail();
 	
-	@DefaultStringValue("Please enter a valid date of birth.")
+	@DefaultStringValue("Please enter a valid date of birth (dd/mm/yyyy).")
 	String errorInvalidDateOfBirth();
 	
 	@DefaultStringValue("Please enter a valid name.")

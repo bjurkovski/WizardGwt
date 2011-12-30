@@ -25,7 +25,7 @@ public class MoviePage extends WizardPage {
 	private XMLMovies xml;
 	private HashMap<String, String> moviePosters = new HashMap<String, String>(); 
 	private final Image currentPoster = new Image();
-	private final ListBox movieList = new ListBox();
+	public final ListBox movieList = new ListBox();
 	private final Grid grid = new Grid(1, 2);
 	
 	public MoviePage() {

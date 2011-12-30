@@ -39,7 +39,8 @@ public class ReviewPage extends WizardPage {
 	public final Label city = new Label();
 	public final Label email = new Label();
 	public final Label sex = new Label();
-	private final Grid grid = new Grid(7, 2);
+	public final Label favMovie = new Label();
+	private final Grid grid = new Grid(8, 2);
 	
 	public ReviewPage() {
 		grid.setWidget(0, 0, new HTML(toBold(constants.name())));
@@ -62,9 +63,12 @@ public class ReviewPage extends WizardPage {
 		
 		grid.setWidget(6, 0, new HTML(toBold(constants.sex())));
 		grid.setWidget(6, 1, sex);
+		
+		grid.setWidget(7, 0, new HTML(toBold(constants.favMovie())));
+		grid.setWidget(7, 1, favMovie);
 	}
 	
-	public void fillWith(FormPage fp) {
+	public void fillWith(FormPage fp, MoviePage mp) {
 		name.setText(fp.nameField.getText());
 		lastName.setText(fp.lastNameField.getText());
 		dateOfBirth.setText(fp.dateOfBirthField.getText());
@@ -78,6 +82,8 @@ public class ReviewPage extends WizardPage {
 		} else {
 			sex.setText(constants.fem());
 		}
+		int idx = mp.movieList.getSelectedIndex();
+		favMovie.setText(mp.movieList.getItemText(idx));
 	}
 
 	@Override
